@@ -1,83 +1,64 @@
-class PersegiPanjang {
+class Mahasiswa {
     // data member atau atribut
     String nama;
-    double panjang;
-    double lebar;
-    double luas;
-    double keliling;
+    String nim;
 
-    PersegiPanjang(String nama, double panjang, double lebar) {
+    Mahasiswa(String nama, String nim) {
         this.nama = nama;
-        this.panjang = panjang;
-        this.lebar = lebar;
-        hitungLuas();
-        hitungKeliling();
+        this.nim = nim;
+
     }
 
-    // Method 1: tanpa parameter dan return
+    // method tanpa parameter dan return
     void cetak() {
+        // mencetak nama dan nim
         System.out.println("Nama : " + this.nama);
-        System.out.println("Panjang : " + this.panjang);
-        System.out.println("Lebar : " + this.lebar);
-        System.out.println("Luas : " + this.luas);
-        System.out.println("Keliling : " + this.keliling);
+        System.out.println("NIM : " + this.nim);
     }
 
-    // Method 2: tanpa return dengan parameter
+    // method tanpa return dengan parameter
     void setNama(String nama) {
         this.nama = nama;
     }
 
-    // Method 3: dengan return tanpa parameter
+    // method dengan return tanpa parameter
     String getNama() {
         return this.nama;
     }
 
-    // Method 4: dengan return tanpa parameter
-    double getLuas() {
-        return this.luas;
+    String getNIM() {
+        return this.nim;
     }
 
-    // Method 5: dengan parameter dan return
-    String deskripsi(String prefix) {
-        return prefix + " Persegi Panjang " + this.nama;
-    }
-
-    // Method 6: tanpa parameter dan return
-    void hitungLuas() {
-        this.luas = this.panjang * this.lebar;
-    }
-
-    // Method tambahan: tanpa parameter dan return
-    void hitungKeliling() {
-        this.keliling = 2 * (this.panjang + this.lebar);
+    // method dengan parameter dan return
+    String sayHI(String nama) {
+        this.nama = nama;
+        return "Selamat Datang di Siakad " + this.nama;
     }
 }
 
 public class App {
     public static void main(String[] args) throws Exception {
         // instansi atau menciptakan objek
-        PersegiPanjang pp1 = new PersegiPanjang("PP1", 5, 3);
+        Mahasiswa mhs_1 = new Mahasiswa("Supri", "23241020");
 
         // memanggil method cetak()
-        System.out.println("Data awal:");
-        pp1.cetak();
+        mhs_1.cetak();
 
-        // memanggil method setNama()
-        pp1.setNama("Persegi Panjang A");
+        // memanggil metod setNama()
+        mhs_1.setNama("Kipli");
+        // cetak setelah ubah nama
+        mhs_1.cetak();
 
-        System.out.println("\nData setelah nama diubah:");
-        pp1.cetak();
+        // memanggil method getNama dan getNIM
+        String nama_mhs = mhs_1.getNama();
+        String nim_mhs = mhs_1.getNIM();
+        System.out.println("Nama : " + nama_mhs);
+        System.out.println("NIM : " + nim_mhs);
 
-        // memanggil method getNama dan getLuas
-        String nama_pp = pp1.getNama();
-        double luas_pp = pp1.getLuas();
-        System.out.println("\nMengambil data dengan getter:");
-        System.out.println("Nama : " + nama_pp);
-        System.out.println("Luas : " + luas_pp);
+        // memanggil method sayHI()
+        String pesan = mhs_1.sayHI(mhs_1.nama);
+        System.out.println(pesan);
 
-        // memanggil method deskripsi()
-        String deskripsi = pp1.deskripsi("Ini adalah");
-        System.out.println("\n" + deskripsi);
     }
 }
